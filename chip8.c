@@ -3,7 +3,7 @@
 #include <glfw/glfw3.h>
 
 void chipInit(chip_t* chip) {
-  chip->pc = 0;
+  chip->pc = 0x200;
   chip->i = 0;
   chip->stackp = 0;
   chip->delay_timer = 0;
@@ -18,7 +18,7 @@ void chipStep(chip_t* chip) {
 }
 void chipLoad(chip_t* chip, const char* file){
   FILE* filep = fopen(file, "r");
-  fread(chip->memory, sizeof(char), 4096, filep);
+  fread(chip->memory + 0x200, sizeof(char), 4096 - 0x200, filep);
   fclose(filep);
 }
 void chipDraw(chip_t* chip){
