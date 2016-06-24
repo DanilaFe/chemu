@@ -19,6 +19,7 @@ struct chip_s {
 typedef struct chip_s chip_t;
 
 void chipInit(chip_t* chip);
+void chipClear(chip_t* chip);
 void chipStep(chip_t* chip);
 void chipLoad(chip_t* chip, const char* file);
 void chipDraw(chip_t* chip);

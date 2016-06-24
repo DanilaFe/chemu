@@ -13,6 +13,9 @@ void chipInit(chip_t* chip) {
   for(int i = 0; i <   16; i++) chip->stack[i] = 0;
   for(int i = 0; i < (64 *32); i++) chip->display[i] = 0;
 }
+void chipClear(chip_t* chip){
+  for(int i = 0; i < (64 *32); i++) chip->display[i] = 0;
+}
 void chipStep(chip_t* chip) {
 
 }
