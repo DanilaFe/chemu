@@ -24,6 +24,7 @@ int main(int argc, char** argv){
 
   while(!glfwWindowShouldClose(window)){
     glClear(GL_COLOR_BUFFER_BIT);
+    chipStep(&chip);
     chipDraw(&chip);
     glfwSwapBuffers(window);
     glfwPollEvents();

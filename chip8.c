@@ -17,7 +17,10 @@ void chipClear(chip_t* chip){
   for(int i = 0; i < (64 *32); i++) chip->display[i] = 0;
 }
 void chipStep(chip_t* chip) {
+  unsigned short int opcode = (chip->memory[chip->pc] << 8) | (chip->memory[chip->pc + 1]);
+  unsigned char head = ((opcode & 0xf000) >> 12) & 0xff;
 
+  (chip->pc) += 2;
 }
 void chipLoad(chip_t* chip, const char* file){
   FILE* filep = fopen(file, "r");
