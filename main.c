@@ -3,6 +3,7 @@
 #include "chip8.h"
 
 #define CHIP8_USE_LOG true
+#define CHIP8_MAX_ITER 20
 
 void chiplog(const char* logtext){
   #ifdef CHIP8_USE_LOG
@@ -27,9 +28,21 @@ int main(int argc, char** argv){
   chipInit(&chip);
   chipLoad(&chip, argv[1]);
 
+  double next;
+  short iterations;
+
   while(!glfwWindowShouldClose(window)){
+    next = glfwGetTime() + 1.f / 60;
+    iterations = 0;
+
+    while(glfwGetTime() < next) {
+      if(iterations < CHIP8_MAX_ITER) {
+        chipStep(&chip);
+        iterations++;
+      }
+    }
+
     glClear(GL_COLOR_BUFFER_BIT);
-    chipStep(&chip);
     chipDraw(&chip);
     glfwSwapBuffers(window);
     glfwPollEvents();
