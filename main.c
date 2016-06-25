@@ -2,28 +2,19 @@
 #include <stdio.h>
 #include "chip8.h"
 
-#define CHIP8_USE_LOG true
-#define CHIP8_MAX_ITER 20
-
-void chiplog(const char* logtext){
-  #ifdef CHIP8_USE_LOG
-  printf("%s\n", logtext);
-  #endif
-}
-
 int main(int argc, char** argv){
   if(argc == 1) {
-    chiplog("Please enter a program to emulate.");
+    chipLog("Please enter a program to emulate.");
     return 0;
   }
 
-  chiplog("Initializing GLFW");
+  chipLog("Initializing GLFW");
   glfwInit();
   GLFWwindow* window = glfwCreateWindow(64 * 8, 32 * 8, "Chip-8", NULL, NULL);
   glfwMakeContextCurrent(window);
-  chiplog("GLFW Initialized");
+  chipLog("GLFW Initialized");
 
-  chiplog("Initializing Chip");
+  chipLog("Initializing Chip");
   chip_t chip;
   chipInit(&chip);
   chipLoad(&chip, argv[1]);
@@ -48,7 +39,7 @@ int main(int argc, char** argv){
     glfwPollEvents();
   }
 
-  chiplog("Terminating GLFW");
+  chipLog("Terminating GLFW");
   glfwDestroyWindow(window);
   glfwTerminate();
 

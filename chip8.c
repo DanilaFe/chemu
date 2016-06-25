@@ -43,3 +43,8 @@ void chipDraw(chip_t* chip){
     }
   }
 }
+void chipLog(const char* logtext){
+  #ifdef CHIP8_USE_LOG
+  printf("[Chip-8] %s\n", logtext);
+  #endif
+}
