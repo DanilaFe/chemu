@@ -3,8 +3,9 @@
 #include "chip8.h"
 
 int main(int argc, char** argv){
+  chipPrintInfo();
   if(argc == 1) {
-    chipLog("Please enter a program to emulate.");
+    chipLog("No input file. Exiting.");
     return 0;
   }
 

@@ -45,6 +45,16 @@ void chipDraw(chip_t* chip){
 }
 void chipLog(const char* logtext){
   #ifdef CHIP8_USE_LOG
-  printf("[Chip-8] %s\n", logtext);
+  if(CHIP8_USE_LOG)
+    printf("[Chip-8] %s\n", logtext);
   #endif
+}
+
+void chipPrintInfo() {
+  printf("-----------\n");
+  printf("Chip-8 Emulator By DanilaFe\n");
+  printf("Compiled Against GLFW: %i.%i\n", GLFW_VERSION_MAJOR, GLFW_VERSION_MINOR);
+  printf("Logging Enabled: %i\n", CHIP8_USE_LOG);
+  printf("Target Iterations Per Second: %i\n", CHIP8_MAX_ITER);
+  printf("-----------\n");
 }
