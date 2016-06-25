@@ -33,6 +33,8 @@ int main(int argc, char** argv){
         iterations++;
       }
     }
+    if(chip.sound_timer > 0) (chip.sound_timer)--;
+    if(chip.delay_timer > 0) (chip.delay_timer)--;
 
     glClear(GL_COLOR_BUFFER_BIT);
     chipDraw(&chip);
