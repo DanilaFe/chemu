@@ -34,10 +34,10 @@ void chipDraw(chip_t* chip){
       int enabled = chip->display[index];
       if(enabled){
         glBegin(GL_QUADS);
-          glVertex2d(2.f * (w + 1) / 64 - 1, 2.f * (h + 1) / 32 - 1);
-          glVertex2d(2.f * (w + 1) / 64 - 1, 2.f * h / 32 - 1);
-          glVertex2d(2.f * w / 64 - 1, 2.f * h / 32 - 1);
-          glVertex2d(2.f * w / 64 - 1, 2.f * (h + 1) / 32 - 1);
+          glVertex2d(2.f * (w + 1) / 64 - 1, -(2.f * (h + 1) / 32 - 1));
+          glVertex2d(2.f * (w + 1) / 64 - 1, -(2.f * h / 32 - 1));
+          glVertex2d(2.f * w / 64 - 1, -(2.f * h / 32 - 1));
+          glVertex2d(2.f * w / 64 - 1, -(2.f * (h + 1) / 32 - 1));
         glEnd();
       }
     }
