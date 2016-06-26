@@ -78,7 +78,7 @@ void chipStep(chip_t* chip) {
   } else if(head == 0x7) {
     unsigned char reg = ((opcode & 0xf00) >> 8) & 0xff;
     unsigned char nn = opcode & 0xff;
-    chip->v[reg] += nn;
+    chip->v[reg] = (chip->v[reg] + nn) & 0xff;
   } else if(head == 0x8) {
     unsigned char regx = ((opcode & 0xf00) >> 8) & 0xff;
     unsigned char regy = ((opcode & 0xf0 ) >> 4) & 0xff;
