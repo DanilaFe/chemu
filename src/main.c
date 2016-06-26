@@ -1,6 +1,7 @@
 #include <glfw/glfw3.h>
 #include <stdio.h>
 #include "chip8.h"
+#include "chip8_util.h"
 
 int main(int argc, char** argv){
   chipPrintInfo();
