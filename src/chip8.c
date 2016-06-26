@@ -139,12 +139,15 @@ void chipStep(chip_t* chip) {
     }
   } else if(head == 0xE) {
     unsigned char regx = ((opcode & 0xf00) >> 8) & 0xff;
+    unsigned char tail = opcode  & 0xff;
+    if(tail == 0x9e) { chip->pc += 0; }
+    if(tail == 0xa1) { chip->pc += 2; }
   } else if(head == 0xF) {
     unsigned char regx = ((opcode & 0xf00) >> 8) & 0xff;
     unsigned char tail = opcode & 0xff;
     if(tail == 0x07) chip->v[regx] = chip->delay_timer;
     else if(tail == 0x0a) {
-
+      chip->v[regx] = 0;
     }
     else if(tail == 0x15) chip->delay_timer = chip->v[regx];
     else if(tail == 0x18) chip->sound_timer = chip->v[regx];
